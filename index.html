@@ -956,19 +956,13 @@
 
 
   <script>
-    if (window.innerWidth <= 900) {
-      document.querySelectorAll('.tl-item').forEach(item => {
-        item.addEventListener('click', () => {
-          item.classList.toggle('open');
-        });
+    const tlItems = document.querySelectorAll('.tl-item');
+    tlItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        tlItems.forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
       });
-    }
-    window.addEventListener('resize', () => {
-      if (window.innerWidth <= 900) {
-        document.querySelectorAll('.tl-item').forEach(item => {
-          item.addEventListener('click', () => item.classList.toggle('open'));
-        });
-      }
     });
   </script>
 </body>
